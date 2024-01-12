@@ -23,11 +23,24 @@ builder.Services.AddSession(options =>
 });
 builder.Services.AddNpgsqlDataSource(Utilities.ProperlyFormattedConnectionString,
     dataSourceBuilder => dataSourceBuilder.EnableParameterLogging());
+    
+var dbConfig = new DatabaseConfig();
+builder.Configuration.GetSection("DatabaseConfig").Bind(dbConfig);
+builder.Services.AddSingleton(dbConfig);
+
+
 builder.Services.AddSingleton<IAccountRepository, AccountRepository>();
 builder.Services.AddSingleton<IPasswordHashRepository, PasswordHashRepository>();
+builder.Services.AddSingleton<ICategoryRepository, CategoryRepository>();
+builder.Services.AddSingleton<IBlogRepository, BlogRepository>();
+builder.Services.AddSingleton<ICommentRepository, CommentRepository>();
 
 
 builder.Services.AddSingleton<AccountService>();
+builder.Services.AddSingleton<CategoryService>();
+builder.Services.AddSingleton<BlogService>();
+builder.Services.AddSingleton<CommentService>();
+
 
 
 

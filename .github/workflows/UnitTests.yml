@@ -1,0 +1,52 @@
+name: Test Blog Webapp Api
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      pgconn: ${{ secrets.PGCONN }}
+
+    steps:
+      # Step 1: Setup .NET SDK
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '8.0.x'
+      
+      # Step 2: Checkout the current repository
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      # Step 3: Install API Nuget Packages
+      - name: Install API Nuget Packages
+        run: |
+          cd Api
+          dotnet restore
+      
+      # Step 4: Start your API
+      - name: Start API
+        run: |
+          cd Api
+          dotnet run &
+          echo "API_PID=$!" >> $GITHUB_ENV
+
+      # Step 5: Sleep to allow time for the API to start
+      - name: Sleep for 60 seconds
+        run: sleep 60s
+      
+      # Step 6: Run tests
+      - name: Run Tests
+        run: |
+          cd BlogWebbAppTests
+          dotnet test BlogWebAppTests.csproj
+
+      # Step 7: Stop the API
+      - name: Stop API
+        if: always()
+        run: |
+          kill $API_PID || true
