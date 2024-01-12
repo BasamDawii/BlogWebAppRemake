@@ -7,18 +7,19 @@ namespace Infrastructure.Repositories;
 
 public class AccountRepository : IAccountRepository
 {
-   
     private readonly NpgsqlDataSource _dataSource;
+    private readonly string _schema;
 
-    public AccountRepository(NpgsqlDataSource dataSource)
+    public AccountRepository(NpgsqlDataSource dataSource, DatabaseConfig dbConfig)
     {
         _dataSource = dataSource;
+        _schema = dbConfig.Schema;
     }
     
    public User Create(string fullName, string email)
     {
-        const string sql = $@"
-INSERT INTO blog_schema.users (full_name, email)
+        var sql = $@"
+INSERT INTO {_schema}.users (full_name, email)
 VALUES (@fullName, @email)
 RETURNING
     id as {nameof(User.Id)},
@@ -46,13 +47,13 @@ RETURNING
 
     public User? GetById(int id)
     {
-        const string sql = $@"
+        var sql = $@"
 SELECT
     id as {nameof(User.Id)},
     full_name as {nameof(User.FullName)},
     email as {nameof(User.Email)},
     role as {nameof(User.Role)}
-FROM blog_schema.users
+FROM {_schema}.users
 WHERE id = @id;
 ";
         try
@@ -72,9 +73,9 @@ WHERE id = @id;
     
 public User? GetUserByEmail(string email)
 {
-    const string sql = @"
+    var sql = $@"
 SELECT id, full_name, email, role
-FROM blog_schema.users
+FROM {_schema}.users
 WHERE email = @Email;";
 
     try
@@ -94,7 +95,7 @@ WHERE email = @Email;";
     
 public void DeleteUser(int id)
 {
-    const string sql = @"DELETE FROM blog_schema.users WHERE id = @Id;";
+    var sql = $@"DELETE FROM {_schema}.users WHERE id = @Id;";
     using (var connection = _dataSource.OpenConnection())
         try
         {
@@ -112,13 +113,13 @@ public void DeleteUser(int id)
 
 public IEnumerable<User> GetAllUsers()
 {
-    const string sql = $@"
+    var sql = $@"
 SELECT
     id as {nameof(User.Id)},
     full_name as {nameof(User.FullName)},
     email as {nameof(User.Email)},
     role as {nameof(User.Role)}
-FROM blog_schema.users;";
+FROM {_schema}.users;";
 
     try
     {
@@ -134,5 +135,5 @@ FROM blog_schema.users;";
         throw new RepositoryException("An unexpected error occurred while dealing with database.", ex);
     }
 }
- 
+
 }

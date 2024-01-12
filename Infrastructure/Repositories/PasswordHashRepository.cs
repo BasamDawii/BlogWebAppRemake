@@ -8,24 +8,26 @@ namespace Infrastructure.Repositories;
 public class PasswordHashRepository : IPasswordHashRepository
 {
     private readonly NpgsqlDataSource _dataSource;
+    private readonly string _schema;
 
-    public PasswordHashRepository(NpgsqlDataSource dataSource)
+    public PasswordHashRepository(NpgsqlDataSource dataSource, DatabaseConfig dbConfig)
     {
         _dataSource = dataSource;
+        _schema = dbConfig.Schema;
     }
 
     public PasswordHash GetByEmail(string email)
     {
         try
         {
-            const string sql = $@"
+            var sql = $@"
                 SELECT 
                     user_id as {nameof(PasswordHash.UserId)},
                     hash as {nameof(PasswordHash.Hash)},
                     salt as {nameof(PasswordHash.Salt)},
                     algorithm as {nameof(PasswordHash.Algorithm)}
-                FROM blog_schema.password_hash
-                JOIN blog_schema.users ON blog_schema.password_hash.user_id = users.id
+                FROM {_schema}.password_hash
+                JOIN {_schema}.users ON {_schema}.password_hash.user_id = users.id
                 WHERE email = @email;
                 ";
             using var connection = _dataSource.OpenConnection();
@@ -42,8 +44,8 @@ public class PasswordHashRepository : IPasswordHashRepository
     {
         try
         {
-            const string sql = $@"
-                INSERT INTO blog_schema.password_hash (user_id, hash, salt, algorithm)
+            var sql = $@"
+                INSERT INTO {_schema}.password_hash (user_id, hash, salt, algorithm)
                 VALUES (@userId, @hash, @salt, @algorithm)
                 ";
             using var connection = _dataSource.OpenConnection();
