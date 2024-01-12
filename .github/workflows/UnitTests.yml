@@ -42,7 +42,7 @@ jobs:
       # Step 6: Run tests
       - name: Run Tests
         run: |
-          cd BlogWebbAppTests
+          cd BlogWebAppTests
           dotnet test BlogWebAppTests.csproj
 
       # Step 7: Stop the API
