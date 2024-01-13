@@ -58,7 +58,7 @@ builder.Services.AddCors(options =>
 
     options.AddPolicy("ProdCorsPolicy", builder =>
     {
-        builder.WithOrigins("https://our-deployed-frontend-to-firebase")
+        builder.WithOrigins("https://blogwebappremake.web.app")
             .AllowAnyHeader()
             .AllowAnyMethod()
             .AllowCredentials();
@@ -67,6 +67,10 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+
+var frontEndRelativePath = "./../frontend/www";
+builder.Services.AddSpaStaticFiles(conf => conf.RootPath = frontEndRelativePath);
 
 var app = builder.Build();
 
@@ -104,6 +108,11 @@ else
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.UseSpa(conf =>
+{
+    conf.Options.SourcePath = frontEndRelativePath;
+});
 
 app.MapControllers();
 app.UseMiddleware<GlobalExceptionHandler>();
