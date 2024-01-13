@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "PUKZuKc8zBhlAnlFlvztAUjOGE34H2PCiK9HuaLwY/66EpL3wL8fzHmBm6ni8hqFQhNv+B/u0IymaTvpyv1vrg==",
+  "dgSpecHash": "wdyLX//OvUa2OZavPfE2fgm0hDjQHAIyAJZ9NS1XwNTg5tJ08RwR+3AGgz2nPL5ER1V1j5vuPEBnVtS43uP3sA==",
   "success": true,
   "projectFilePath": "C:\\Users\\basam\\RiderProjects\\BlogWebAppRemake\\Api\\Api.csproj",
   "expectedPackageFiles": [
@@ -8,9 +8,14 @@
     "C:\\Users\\basam\\.nuget\\packages\\konscious.security.cryptography.argon2\\1.3.0\\konscious.security.cryptography.argon2.1.3.0.nupkg.sha512",
     "C:\\Users\\basam\\.nuget\\packages\\konscious.security.cryptography.blake2\\1.1.0\\konscious.security.cryptography.blake2.1.1.0.nupkg.sha512",
     "C:\\Users\\basam\\.nuget\\packages\\microsoft.aspnetcore.openapi\\8.0.0-preview.7.23375.9\\microsoft.aspnetcore.openapi.8.0.0-preview.7.23375.9.nupkg.sha512",
+    "C:\\Users\\basam\\.nuget\\packages\\microsoft.aspnetcore.spaservices.extensions\\8.0.0\\microsoft.aspnetcore.spaservices.extensions.8.0.0.nupkg.sha512",
     "C:\\Users\\basam\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
     "C:\\Users\\basam\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\7.0.0\\microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512",
+    "C:\\Users\\basam\\.nuget\\packages\\microsoft.extensions.fileproviders.abstractions\\8.0.0\\microsoft.extensions.fileproviders.abstractions.8.0.0.nupkg.sha512",
+    "C:\\Users\\basam\\.nuget\\packages\\microsoft.extensions.fileproviders.physical\\8.0.0\\microsoft.extensions.fileproviders.physical.8.0.0.nupkg.sha512",
+    "C:\\Users\\basam\\.nuget\\packages\\microsoft.extensions.filesystemglobbing\\8.0.0\\microsoft.extensions.filesystemglobbing.8.0.0.nupkg.sha512",
     "C:\\Users\\basam\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\6.0.0\\microsoft.extensions.logging.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\basam\\.nuget\\packages\\microsoft.extensions.primitives\\8.0.0\\microsoft.extensions.primitives.8.0.0.nupkg.sha512",
     "C:\\Users\\basam\\.nuget\\packages\\microsoft.openapi\\1.4.3\\microsoft.openapi.1.4.3.nupkg.sha512",
     "C:\\Users\\basam\\.nuget\\packages\\netescapades.aspnetcore.securityheaders\\0.21.0\\netescapades.aspnetcore.securityheaders.0.21.0.nupkg.sha512",
     "C:\\Users\\basam\\.nuget\\packages\\npgsql\\8.0.0-preview.4\\npgsql.8.0.0-preview.4.nupkg.sha512",
