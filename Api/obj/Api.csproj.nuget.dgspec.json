@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/marcelohani/RiderProjects/BlogWebAppRemake/Api/Api.csproj": {}
+    "C:\\Users\\basam\\RiderProjects\\BlogWebAppRemake\\Api\\Api.csproj": {}
   },
   "projects": {
-    "/Users/marcelohani/RiderProjects/BlogWebAppRemake/Api/Api.csproj": {
+    "C:\\Users\\basam\\RiderProjects\\BlogWebAppRemake\\Api\\Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/marcelohani/RiderProjects/BlogWebAppRemake/Api/Api.csproj",
+        "projectUniqueName": "C:\\Users\\basam\\RiderProjects\\BlogWebAppRemake\\Api\\Api.csproj",
         "projectName": "Api",
-        "projectPath": "/Users/marcelohani/RiderProjects/BlogWebAppRemake/Api/Api.csproj",
-        "packagesPath": "/Users/marcelohani/.nuget/packages/",
-        "outputPath": "/Users/marcelohani/RiderProjects/BlogWebAppRemake/Api/obj/",
+        "projectPath": "C:\\Users\\basam\\RiderProjects\\BlogWebAppRemake\\Api\\Api.csproj",
+        "packagesPath": "C:\\Users\\basam\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\basam\\RiderProjects\\BlogWebAppRemake\\Api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/marcelohani/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\basam\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -26,8 +26,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "/Users/marcelohani/RiderProjects/BlogWebAppRemake/Service/Service.csproj": {
-                "projectPath": "/Users/marcelohani/RiderProjects/BlogWebAppRemake/Service/Service.csproj"
+              "C:\\Users\\basam\\RiderProjects\\BlogWebAppRemake\\Service\\Service.csproj": {
+                "projectPath": "C:\\Users\\basam\\RiderProjects\\BlogWebAppRemake\\Service\\Service.csproj"
               }
             }
           }
@@ -78,21 +78,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/marcelohani/RiderProjects/BlogWebAppRemake/Infrastructure/Infrastructure.csproj": {
+    "C:\\Users\\basam\\RiderProjects\\BlogWebAppRemake\\Infrastructure\\Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/marcelohani/RiderProjects/BlogWebAppRemake/Infrastructure/Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\basam\\RiderProjects\\BlogWebAppRemake\\Infrastructure\\Infrastructure.csproj",
         "projectName": "Infrastructure",
-        "projectPath": "/Users/marcelohani/RiderProjects/BlogWebAppRemake/Infrastructure/Infrastructure.csproj",
-        "packagesPath": "/Users/marcelohani/.nuget/packages/",
-        "outputPath": "/Users/marcelohani/RiderProjects/BlogWebAppRemake/Infrastructure/obj/",
+        "projectPath": "C:\\Users\\basam\\RiderProjects\\BlogWebAppRemake\\Infrastructure\\Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\basam\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\basam\\RiderProjects\\BlogWebAppRemake\\Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/marcelohani/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\basam\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -141,21 +141,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/marcelohani/RiderProjects/BlogWebAppRemake/Service/Service.csproj": {
+    "C:\\Users\\basam\\RiderProjects\\BlogWebAppRemake\\Service\\Service.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/marcelohani/RiderProjects/BlogWebAppRemake/Service/Service.csproj",
+        "projectUniqueName": "C:\\Users\\basam\\RiderProjects\\BlogWebAppRemake\\Service\\Service.csproj",
         "projectName": "Service",
-        "projectPath": "/Users/marcelohani/RiderProjects/BlogWebAppRemake/Service/Service.csproj",
-        "packagesPath": "/Users/marcelohani/.nuget/packages/",
-        "outputPath": "/Users/marcelohani/RiderProjects/BlogWebAppRemake/Service/obj/",
+        "projectPath": "C:\\Users\\basam\\RiderProjects\\BlogWebAppRemake\\Service\\Service.csproj",
+        "packagesPath": "C:\\Users\\basam\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\basam\\RiderProjects\\BlogWebAppRemake\\Service\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/marcelohani/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\basam\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -167,8 +167,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "/Users/marcelohani/RiderProjects/BlogWebAppRemake/Infrastructure/Infrastructure.csproj": {
-                "projectPath": "/Users/marcelohani/RiderProjects/BlogWebAppRemake/Infrastructure/Infrastructure.csproj"
+              "C:\\Users\\basam\\RiderProjects\\BlogWebAppRemake\\Infrastructure\\Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\basam\\RiderProjects\\BlogWebAppRemake\\Infrastructure\\Infrastructure.csproj"
               }
             }
           }
@@ -204,7 +204,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
