@@ -1,0 +1,53 @@
+
+# BasamDawii (Basam Dawi) and Bigdeal99 (Marcelo Hani) are the default owners for everything in the repo.
+*       @BasamDawii @Bigdeal99
+
+
+# BasamDawii owns all files in the Api/Controllers directory
+/Api/Controllers/      @BasamDawii
+
+
+# BasamDawii (Basam Dawi) owns all files in the following directories
+/BlogWebAppTests/    @BasamDawii
+
+
+# BasamDawii (Basam Dawi) owns following classes
+/Infrastructure/Interfaces/IBlogRepository.cs  @BasamDawii
+/Infrastructure/Interfaces/ICategoryRepository.cs  @BasamDawii
+/Infrastructure/Interfaces/ICommentRepository.cs  @BasamDawii
+/Infrastructure/Repositories/BlogRepository.cs  @BasamDawii
+/Infrastructure/Repositories/CategoryRepository.cs  @BasamDawii
+/Infrastructure/Repositories/CommentRepository.cs  @BasamDawii
+/Infrastructure/DatabaseConfig.cs  @BasamDawii
+/Service/BlogService.cs  @BasamDawii
+/Service/CategoryService.cs  @BasamDawii
+/Service/CommentService.cs  @BasamDawii
+/Api/Controllers/BlogController.cs  @BasamDawii
+/Api/Controllers/CategoryController.cs  @BasamDawii
+/Api/Controllers/CommentController.cs  @BasamDawii
+
+
+# Bigdeal99 (Marcelo Hani) owns all files in the following directories
+/Service/PasswordService/           @Bigdeal99
+/Api/DataTransferModels/           @Bigdeal99
+/Api/Middleware/           @Bigdeal99
+/Api/Filters/           @Bigdeal99
+
+/frontend/           @Bigdeal99
+
+# Bigdeal99 (Marcelo Hani) owns following classes
+/Infrastructure/Utilities.cs  @Bigdeal99
+/Infrastructure/Utilities.cs  @Bigdeal99
+/Infrastructure/Models/User.cs  @Bigdeal99
+/Infrastructure/Models/PasswordHash.cs  @Bigdeal99
+/Infrastructure/Interfaces/IAccountRepository.cs  @Bigdeal99
+/Infrastructure/Interfaces/IPasswordHashRepository.cs  @Bigdeal99
+/Infrastructure/Repositories/AccountRepository.cs  @Bigdeal99
+/Infrastructure/Repositories/PasswordHashRepository.cs  @Bigdeal99
+/Service/CommandQuarryModels/CommandModels/CreateUserCommand.cs  @Bigdeal99
+/Service/CommandQuarryModels/CommandModels/UserLoginCommand.cs  @Bigdeal99
+/Service/ServiceException.cs      @Bigdeal99
+/Service/AccountService.cs      @Bigdeal99
+/Service/SessionData.cs      @Bigdeal99
+/Api/HttpContextExtensions.cs      @Bigdeal99
+/Api/Controllers/AccountController.cs      @Bigdeal99

@@ -1,9 +1,76 @@
+using System.Text.Json.Serialization;
+using Api.Middleware;
+using Infrastructure;
+using Infrastructure.Interfaces;
+using Infrastructure.Repositories;
+using Service;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddControllers()
+    .AddJsonOptions(options => options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
+
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromHours(4);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+    options.Cookie.SameSite = SameSiteMode.None;
+    options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+});
+builder.Services.AddNpgsqlDataSource(Utilities.ProperlyFormattedConnectionString,
+    dataSourceBuilder => dataSourceBuilder.EnableParameterLogging());
+    
+var dbConfig = new DatabaseConfig();
+builder.Configuration.GetSection("DatabaseConfig").Bind(dbConfig);
+builder.Services.AddSingleton(dbConfig);
+
+
+builder.Services.AddSingleton<IAccountRepository, AccountRepository>();
+builder.Services.AddSingleton<IPasswordHashRepository, PasswordHashRepository>();
+builder.Services.AddSingleton<ICategoryRepository, CategoryRepository>();
+builder.Services.AddSingleton<IBlogRepository, BlogRepository>();
+builder.Services.AddSingleton<ICommentRepository, CommentRepository>();
+
+
+builder.Services.AddSingleton<AccountService>();
+builder.Services.AddSingleton<CategoryService>();
+builder.Services.AddSingleton<BlogService>();
+builder.Services.AddSingleton<CommentService>();
+
+
+
+
+
+builder.Services.AddCors(options =>
+
+{
+    options.AddPolicy("DevCorsPolicy", builder =>
+    {
+        builder.WithOrigins("http://localhost:4200")
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+            .AllowCredentials();
+    });
+
+    options.AddPolicy("ProdCorsPolicy", builder =>
+    {
+        builder.WithOrigins("https://blogwebappremake.web.app")
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+            .AllowCredentials();
+    });
+});
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+
+var frontEndRelativePath = "./../frontend/www";
+builder.Services.AddSpaStaticFiles(conf => conf.RootPath = frontEndRelativePath);
 
 var app = builder.Build();
 
@@ -16,29 +83,39 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-var summaries = new[]
+if (app.Environment.IsDevelopment())
 {
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
+    app.UseCors("DevCorsPolicy");
+}
+else
+{
+    app.UseCors("ProdCorsPolicy");
+}
+app.UseSecurityHeaders();
 
-app.MapGet("/weatherforecast", () =>
-    {
-        var forecast = Enumerable.Range(1, 5).Select(index =>
-                new WeatherForecast
-                (
-                    DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                    Random.Shared.Next(-20, 55),
-                    summaries[Random.Shared.Next(summaries.Length)]
-                ))
-            .ToArray();
-        return forecast;
-    })
-    .WithName("GetWeatherForecast")
-    .WithOpenApi();
+app.UseSession();
+
+app.UseRouting();
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseCors("DevCorsPolicy");
+}
+else
+{
+    app.UseCors("ProdCorsPolicy");
+}
+
+app.UseAuthentication();
+app.UseAuthorization();
+
+app.UseSpa(conf =>
+{
+    conf.Options.SourcePath = frontEndRelativePath;
+});
+
+app.MapControllers();
+app.UseMiddleware<GlobalExceptionHandler>();
 
 app.Run();
 
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}

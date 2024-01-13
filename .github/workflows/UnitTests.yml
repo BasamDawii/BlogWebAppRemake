@@ -1,0 +1,89 @@
+name: Test Blog Webapp Api
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      pgconn: ${{ secrets.PGCONN }}
+
+    steps:
+      # Step 1: Setup .NET SDK
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '8.0.x'
+      
+      # Step 2: Checkout the current repository
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Step 3: Setup Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.17.1'
+      
+      # Step 4: Install Angular CLI
+      - name: Install Angular CLI
+        run: npm install -g @angular/cli
+      
+      # Step 5: Install Playwright Browsers
+      - name: Install Playwright Browsers
+        run: npx playwright install chromium --with-deps
+      
+      # Step 6: Install API Nuget Packages
+      - name: Install API Nuget Packages
+        run: |
+          cd Api
+          dotnet restore
+
+      # Step 7: Start API
+      - name: Start API
+        run: |
+          cd Api
+          dotnet run &
+          echo "API_PID=$!" >> $GITHUB_ENV
+
+      # Step 8: Sleep to allow time for the API to start
+      - name: Sleep for 30 seconds
+        run: sleep 30s
+
+      # Step 9: Install Frontend Dependencies
+      - name: Install Frontend Dependencies
+        run: |
+          cd frontend
+          npm install
+
+      # Step 10: Start Frontend
+      - name: Start Frontend
+        run: |
+          cd frontend
+          ng serve &
+          echo "FRONTEND_PID=$!" >> $GITHUB_ENV
+
+      # Step 11: Sleep to allow time for the frontend to start
+      - name: Sleep for 30 seconds
+        run: sleep 30s
+      
+      # Step 12: Run tests
+      - name: Run Tests
+        run: |
+          cd BlogWebAppTests
+          dotnet test BlogWebAppTests.csproj
+
+      # Step 13: Stop the Frontend
+      - name: Stop Frontend
+        if: always()
+        run: |
+          kill $FRONTEND_PID || true
+
+      # Step 14: Stop the API
+      - name: Stop API
+        if: always()
+        run: |
+          kill $API_PID || true

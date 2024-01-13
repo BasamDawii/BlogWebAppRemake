@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Register</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="form" (ngSubmit)="submit()">
+
+    <ion-item>
+      <ion-label position="floating">Full Name</ion-label>
+      <ion-input type="text" formControlName="fullName"></ion-input>
+    </ion-item>
+    <ion-text color="danger" *ngIf="form.controls.fullName.invalid && form.controls.fullName.touched">
+      <p>Full Name is required.</p>
+    </ion-text>
+
+    <ion-item>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input type="email" formControlName="email"></ion-input>
+    </ion-item>
+    <ion-text color="danger" *ngIf="form.controls.email.invalid && form.controls.email.touched">
+      <p>Valid Email is required.</p>
+    </ion-text>
+
+    <ion-item>
+      <ion-label position="floating">Password</ion-label>
+      <ion-input type="password" formControlName="password"></ion-input>
+    </ion-item>
+    <ion-text color="danger" *ngIf="form.controls.password.invalid && form.controls.password.touched">
+      <p>Password is required (min 8 characters).</p>
+    </ion-text>
+
+    <ion-item>
+      <ion-label position="floating">Repeat Password</ion-label>
+      <ion-input type="password" formControlName="passwordRepeat"></ion-input>
+    </ion-item>
+    <ion-text color="danger" *ngIf="form.controls.passwordRepeat.invalid && form.controls.passwordRepeat.touched">
+      <p>Passwords must match.</p>
+    </ion-text>
+
+    <ion-button expand="block" type="submit" [disabled]="!form.valid">Register</ion-button>
+
+    <div class="ion-padding">
+      <ion-text color="medium">
+        <p class="ion-text-center">
+          Or <ion-router-link color="primary" routerLink="/account/login">return to login</ion-router-link>
+        </p>
+      </ion-text>
+    </div>
+
+  </form>
+</ion-content>

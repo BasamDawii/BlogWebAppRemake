@@ -1,0 +1,25 @@
+<ion-content>
+  <form [formGroup]="blogForm" (ngSubmit)="onSubmit()">
+    <ion-item>
+      <ion-label position="floating">Title</ion-label>
+      <ion-input formControlName="title" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Content</ion-label>
+      <ion-textarea formControlName="content"></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-label>Category</ion-label>
+      <ion-select formControlName="categoryId">
+        <ion-select-option *ngFor="let category of categories" [value]="category.id">
+          {{ category.name }}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Featured Image URL</ion-label>
+      <ion-input formControlName="featuredImage" type="url"></ion-input>
+    </ion-item>
+    <ion-button expand="full" type="submit" [disabled]="!blogForm.valid">Create Blog</ion-button>
+  </form>
+</ion-content>
