@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <div class="flex-spacer"></div>
+    <ion-buttons slot="start">
+      <ion-button routerLink="/user/user-home">Home</ion-button>
+      <ion-button routerLink="/user/my-blogs">My Blogs</ion-button>
+    </ion-buttons>
+
+    <ion-title>User Dashboard</ion-title>
+
+    <ion-buttons slot="end">
+      <!--<ion-button (click)="openProfile()">Profile</ion-button>-->
+      <ion-button (click)="logout()">Logout</ion-button>
+    </ion-buttons>
+
+    <div class="flex-spacer"></div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <router-outlet></router-outlet>
+</ion-content>
