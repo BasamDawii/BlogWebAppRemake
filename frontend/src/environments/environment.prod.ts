@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'blogwebappremake.azurewebsites.net'
+  apiUrl: 'https://blogwebappremake.azurewebsites.net'
 };
