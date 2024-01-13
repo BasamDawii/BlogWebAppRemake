@@ -33,6 +33,8 @@
 /Api/Middleware/           @Bigdeal99
 /Api/Filters/           @Bigdeal99
 
+/frontend/           @Bigdeal99
+
 # Bigdeal99 (Marcelo Hani) owns following classes
 /Infrastructure/Utilities.cs  @Bigdeal99
 /Infrastructure/Utilities.cs  @Bigdeal99

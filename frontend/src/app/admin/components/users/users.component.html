@@ -1,0 +1,21 @@
+<!-- users.component.html -->
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Users List</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let user of users">
+      <ion-label class="ion-text-wrap">
+        <h2>{{ user.fullName }}</h2>
+        <p>Email: {{ user.email }}</p>
+        <p>Role: {{ user.role }}</p>
+      </ion-label>
+      <ion-button color="danger" fill="outline" (click)="deleteUser(user.id)">
+        Delete
+      </ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>
